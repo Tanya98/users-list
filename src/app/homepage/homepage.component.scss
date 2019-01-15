@@ -1,0 +1,39 @@
+.bg {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.block-text {
+    position: absolute;
+    color: white;
+    // font-weight: 500;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 37px;
+    font-weight: 500px;
+    margin-bottom: 0;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: 500px;
+}
+
+.but-show {
+    background-color: white;
+    color: #673ab7;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+}

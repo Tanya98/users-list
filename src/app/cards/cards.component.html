@@ -1,0 +1,34 @@
+<h1>{{title}}</h1>
+<div class="main">
+  <p>
+    <mat-form-field appearance="standard" class="search">
+      <mat-label>Seach by firstname</mat-label>
+      <input matInput placeholder="Search" (input)="searchByFirstName($event)">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  </p>
+  <ng-template #preolder>
+    ...Loading
+  </ng-template>
+</div>
+
+<div class="cards-elements" *ngIf="users$|async as users; else preolder">
+  <mat-card appAdditinalStyles class="example-card" *ngFor="let user of users | searchByName:text">
+    <div class="header">
+      <mat-card-header class="card-header">
+        <div mat-card-avatar class="example-header-image">
+          <img [src]="user.picture.large" class="avatar">
+        </div>
+        <mat-card-title>{{user.name.first | transformString}}</mat-card-title>
+        <mat-card-subtitle [ngStyle]="{'color':'#653594','font-weight':'500'}">{{user.name.title | transformString}} {{user.name.last | transformString}}</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <img mat-card-image [src]="user.picture.large" class="img">
+    <mat-card-content class="block-info">
+      <p> <span class="text">Gender: </span>{{user.gender | transformString}}</p>
+      <p> <span class="text">Firsname: </span>{{user.name.first | transformString}}</p>
+      <p> <span class="text">Lastname: </span>{{user.name.last | transformString}}</p>
+    </mat-card-content>
+    <button class="but-more" (click)="selectedUser(user)">More <i class="fas fa-arrow-right"></i></button>
+  </mat-card>
+</div>

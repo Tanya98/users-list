@@ -1,0 +1,41 @@
+
+<div class="cards-elements" *ngIf="curUser; else preolder">
+  <mat-card appAdditinalStyles class="example-card">
+    <div class="block-images">
+      <div class="header">
+        <mat-card-header class="card-header">
+          <div mat-card-avatar class="example-header-image">
+            <img [src]="curUser.picture.large" class="avatar">
+          </div>
+          <mat-card-title>{{curUser.name.first | transformString}}</mat-card-title>
+          <mat-card-subtitle [ngStyle]="{'color':'#653594','font-weight':'500'}">{{curUser.name.title |
+            transformString}} {{curUser.name.last | transformString}}</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <img mat-card-image [src]="curUser.picture.large" class="img">
+    </div>
+    <div class="data-block">
+      <mat-card-content class="block-info">
+        <p> <span class="text">Gender: </span>{{curUser.gender | transformString}}</p>
+        <p> <span class="text">Firsname: </span>{{curUser.name.first | transformString}}</p>
+        <p> <span class="text">Lastname: </span>{{curUser.name.last | transformString}}</p>
+        <p> <span class="text">Street: </span>{{curUser.location.street | transformString}}</p>
+        <p> <span class="text">City: </span>{{curUser.location.city | transformString}}</p>
+        <p> <span class="text">State: </span>{{curUser.location.state | transformString}}</p>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  <div class="block-time-zone" appAdditinalStyles>
+    <p class="title-time-zone">Time Zone</p>
+    <div class="description">
+    <p><span class="text">Offset: </span>{{curUser.location.timezone.offset}}</p>
+    <p><span class="text">Description: </span>{{curUser.location.timezone.description}}</p>
+  </div>
+  </div>
+</div>
+<div class="block">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+  <agm-marker [latitude]="lat" [longitude]="lng" [label]="A">
+  </agm-marker>
+</agm-map>
+</div>
